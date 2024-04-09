@@ -1,33 +1,35 @@
 @extends('layouts.app')
-@section('content')
 
-<div class="container my-5">
+@section('content')
+<div class="container mt-4">
     <div class="row">
 
         <h2>Ultimi libri inseriti</h2>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Titolo</th>
-                    <th scope="col">Data inserimento</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($books as $book)
+        <div class="col mt-2">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td scope="row">
-                            <a href="#">
-                                {{ $book->title }}
-                            </a>
-                        </td>
-                        <td>
-                            {{ $book->created_at }}
-                        </td>
+                        <th scope="col">Titolo</th>
+                        <th scope="col">Data inserimento</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($books as $book)
+                        <tr>
+                            <td scope="row">
+                                <a href="{{ route('books.show', $book->slug) }}">
+                                    {{ $book->title }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ $book->created_at }}
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
 
     </div>
 </div>

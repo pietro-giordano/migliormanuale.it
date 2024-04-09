@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [BookController::class, 'index'])->name('homepage');
 
-Route::resource('books', BookController::class);
+Route::resource('books', BookController::class)->only(['show']);
 Route::resource('topics', TopicController::class);
 
 Route::get('/dashboard', function () {

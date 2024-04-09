@@ -12,6 +12,7 @@ class BookController extends Controller
      */
     public function index()
     {
+        // get all books
         $books = Book::all();
 
         return view('homepage', compact('books'));
@@ -36,9 +37,12 @@ class BookController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        //
+        // get book by slug
+        $book = Book::where('slug', $slug)->first();
+
+        return view('books.show', compact('book'));
     }
 
     /**

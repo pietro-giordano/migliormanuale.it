@@ -27,7 +27,7 @@ class BookSeeder extends Seeder
                 'slug' => Str::slug($book['title']),
                 'description' => $book['description'],
                 'author' => $book['author'],
-                'image' => $faker->imageUrl(640, 480),
+                'image' => $faker->imageUrl(360, 540),
                 'rating' => $faker->randomFloat(2, 0, 10),
                 'votes' => $faker->randomNumber(4, false),
             ]);
