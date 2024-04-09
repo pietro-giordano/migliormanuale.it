@@ -11,6 +11,8 @@
                 <thead>
                     <tr>
                         <th scope="col">Titolo</th>
+                        <th scope="col">Autore</th>
+                        <th scope="col">Rating</th>
                         <th scope="col">Data inserimento</th>
                     </tr>
                 </thead>
@@ -21,6 +23,12 @@
                                 <a href="{{ route('books.show', $book->slug) }}">
                                     {{ $book->title }}
                                 </a>
+                            </td>
+                            <td>
+                                {{ $book->author }}
+                            </td>
+                            <td>
+                                {{ $book->rating }}
                             </td>
                             <td>
                                 {{ $book->created_at }}
