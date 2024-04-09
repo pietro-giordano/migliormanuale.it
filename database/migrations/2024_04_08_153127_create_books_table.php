@@ -18,8 +18,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('author', 128)->nullable();
             $table->string('image', 255)->nullable();
-            $table->float('rating', 4, 2)->default(0.00);
-            $table->integer('votes')->default(0);
+            $table->float('rating', 4, 2)->default(0.00)->unsigned();
+            $table->integer('votes')->default(0)->unsigned();
             $table->timestamps();
         });
     }
