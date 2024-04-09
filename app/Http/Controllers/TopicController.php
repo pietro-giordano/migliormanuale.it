@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// Models
+use App\Models\Topic;
 
 class TopicController extends Controller
 {
@@ -33,9 +35,12 @@ class TopicController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        //
+        // get topic and reletad books by slug
+        $topic = Topic::with('books')->where('slug', $slug)->first();
+
+        return view('topics.show', compact('topic'));
     }
 
     /**

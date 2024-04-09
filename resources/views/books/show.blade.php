@@ -26,7 +26,7 @@
             <div class="mt-3">
                 <h4>Topics:</h4>
                 @foreach ($book->topics as $topic)
-                    <a class="badge bg-secondary" href="#">{{ $topic->name }}</a>
+                    <a class="badge bg-secondary" href="{{ route('topics.show', $topic->slug) }}">{{ $topic->name }}</a>
                 @endforeach
             </div>
         </div>
@@ -38,7 +38,7 @@
         </div>
 
         <div>
-            <a class="btn btn-primary" href="{{ url()->previous() }}">Torna indietro</a>
+            <a class="btn btn-primary" href="{{ route('homepage') }}">Torna indietro</a>
         </div>
 
     </div>

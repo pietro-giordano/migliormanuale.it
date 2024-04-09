@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
 use Illuminate\Http\Request;
+// Models
+use App\Models\Book;
 
 class BookController extends Controller
 {
@@ -39,7 +40,7 @@ class BookController extends Controller
      */
     public function show(string $slug)
     {
-        // get book and topics by slug 
+        // get book and related topics by slug 
         $book = Book::with('topics')->where('slug', $slug)->first();
 
         return view('books.show', compact('book'));
