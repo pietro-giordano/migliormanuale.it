@@ -39,8 +39,8 @@ class BookController extends Controller
      */
     public function show(string $slug)
     {
-        // get book by slug
-        $book = Book::where('slug', $slug)->first();
+        // get book and topics by slug 
+        $book = Book::with('topics')->where('slug', $slug)->first();
 
         return view('books.show', compact('book'));
     }

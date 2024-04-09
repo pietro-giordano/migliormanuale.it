@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 // Models
 use App\Models\Book;
+use App\Models\Topic;
 // Helpers
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
@@ -31,6 +32,11 @@ class BookSeeder extends Seeder
                 'rating' => $faker->randomFloat(2, 0, 10),
                 'votes' => $faker->randomNumber(4, false),
             ]);
+
+            // get random topic ids
+            $topicIds = Topic::inRandomOrder()->take(rand(1, 4))->pluck('id')->toArray();
+            // attach topics to new book
+            $newBook->topics()->attach($topicIds);
         }
     }
 }

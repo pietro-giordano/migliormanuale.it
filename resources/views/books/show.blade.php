@@ -13,14 +13,21 @@
                 {{ $book->author }}
             </h3>
 
-            <div>
+            <div class="mt-3">
                 <h4>Descrizione:</h4>
                 <p>{{ $book->description }}</p>
             </div>
 
-            <div>
+            <div class="mt-3">
                 <h4>Rating:</h4>
                 <div>{{ $book->rating }} su {{ $book->votes }}</div>
+            </div>
+
+            <div class="mt-3">
+                <h4>Topics:</h4>
+                @foreach ($book->topics as $topic)
+                    <a class="badge bg-secondary" href="#">{{ $topic->name }}</a>
+                @endforeach
             </div>
         </div>
 
