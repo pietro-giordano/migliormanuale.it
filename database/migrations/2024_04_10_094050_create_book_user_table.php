@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('book_topic', function (Blueprint $table) {
+        Schema::create('book_user', function (Blueprint $table) {
             // set foreign key with books table
             $table->unsignedBigInteger('book_id');
             $table->foreign('book_id')
@@ -19,15 +19,17 @@ return new class extends Migration
                 ->on('books')
                 ->onDelete('cascade');
 
-            // set foreign key with topics table
-            $table->unsignedBigInteger('topic_id');
-            $table->foreign('topic_id')
+            // set foreign key with users table
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
                 ->references('id')
-                ->on('topics')
+                ->on('users')
                 ->onDelete('cascade');
 
             // set primary key joining foreign keys
-            $table->primary(['book_id', 'topic_id']);
+            $table->primary(['book_id', 'user_id']);
+
+            $table->integer('vote')->nullable()->unsigned();
             $table->timestamps();
         });
     }
@@ -37,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('book_topic');
+        Schema::dropIfExists('book_user');
     }
 };

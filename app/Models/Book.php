@@ -25,4 +25,10 @@ class Book extends Model
     {
         return $this->belongsToMany(Topic::class);
     }
+
+    // many to many relationship with users
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class)->withPivot('vote');
+    }
 }
