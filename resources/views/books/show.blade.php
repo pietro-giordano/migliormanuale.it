@@ -14,17 +14,16 @@
             </h3>
 
             <div class="mt-3">
-                <h4>Descrizione:</h4>
+                <h5>Descrizione:</h5>
                 <p>{{ $book->description }}</p>
             </div>
 
             <div class="mt-3">
-                <h4>Rating:</h4>
-                <div>{{ $book->rating }} su {{ $book->votes }}</div>
+                <livewire:rating-system :$book> 
             </div>
 
             <div class="mt-3">
-                <h4>Topics:</h4>
+                <h5>Topics:</h5>
                 @foreach ($book->topics as $topic)
                     <a class="badge bg-secondary" href="{{ route('topics.show', $topic->slug) }}">{{ $topic->name }}</a>
                 @endforeach
